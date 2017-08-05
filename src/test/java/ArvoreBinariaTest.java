@@ -119,6 +119,28 @@ public class ArvoreBinariaTest {
         assertEquals(23, arvore.getRaiz().getDireito().getValor());
         // 24 era filho direito do 23 e agora passa a ser filho esquerdo do  25
         assertEquals(24, arvore.getRaiz().getDireito().getDireito().getEsquerdo().getValor());
+    }
 
+    @Test
+    public void deveSomarFilhos() {
+        ArvoreBinaria arvore = new ArvoreBinaria();
+        arvore.inserir(10); // raiz
+        arvore.inserir(20); // direita
+        arvore.inserir(5); // esquerda
+        arvore.inserir(8); // esquerda > direita
+        arvore.inserir(4); // esquerda > esquerda
+        arvore.inserir(12); // direita > esquerda
+        arvore.inserir(25); // direita > direita
+        arvore.inserir(11); // direita > esquerda > esquerda
+        arvore.inserir(13); // direita > esquerda > direita
+        arvore.inserir(30); // direita > direita > direita
+        arvore.inserir(23); // direita > direita > esquerda
+        arvore.inserir(24); // direita > direita > esquerda > direita
+
+        long soma25 = arvore.somarFilhos(25);
+        assertEquals(102, soma25);
+        
+        long soma20 = arvore.somarFilhos(20);
+        assertEquals(158, soma20);
     }
 }

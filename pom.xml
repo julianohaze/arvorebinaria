@@ -6,12 +6,12 @@
         <artifactId>arrays</artifactId>
         <groupId>datastructures</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../../../projetos/datastructures/datastructures/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>datastructures</groupId>
     <artifactId>binarytree</artifactId>
+    <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

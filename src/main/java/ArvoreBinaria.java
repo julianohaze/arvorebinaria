@@ -6,22 +6,25 @@ public class ArvoreBinaria {
     private Elemento raiz;
 
     /**
-     *
      * @param valor
      * @return true se encontrou o elemento na árvore
      */
     public boolean contem(int valor) {
-        Elemento current = raiz;
-        while (current != null) {
-            if (current.valor == valor) {
-                return true;
-            } else if (current.valor > valor) {
-                current = current.esquerdo;
+        return getElemento(valor) != null;
+    }
+
+    public Elemento getElemento(int valor) {
+        Elemento elemento = raiz;
+        while (elemento != null) {
+            if (elemento.valor == valor) {
+                return elemento;
+            } else if (elemento.valor > valor) {
+                elemento = elemento.esquerdo;
             } else {
-                current = current.direito;
+                elemento = elemento.direito;
             }
         }
-        return false;
+        return elemento != null && elemento.getValor() == valor ? elemento : null;
     }
 
     /**
@@ -69,6 +72,26 @@ public class ArvoreBinaria {
             System.out.print(" " + raiz.valor);
             imprimir(raiz.direito);
         }
+    }
+
+    public long somarFilhos(int valor) {
+        Elemento elemento = getElemento(valor);
+        if (elemento == null) {
+            return 0;
+        }
+        long soma = elemento.getValor();
+        soma = somarFilhos(soma, elemento.getDireito());
+        soma = somarFilhos(soma, elemento.getEsquerdo());
+        return soma;
+    }
+
+    private long somarFilhos(long soma, Elemento elemento) {
+        if (elemento != null) {
+            soma = soma + elemento.getValor();
+            soma = somarFilhos(soma, elemento.getDireito());
+            soma = somarFilhos(soma, elemento.getEsquerdo());
+        }
+        return soma;
     }
 
     /**
