@@ -5,6 +5,11 @@ public class ArvoreBinaria {
 
     private Elemento raiz;
 
+    /**
+     *
+     * @param valor
+     * @return true se encontrou o elemento na árvore
+     */
     public boolean contem(int valor) {
         Elemento current = raiz;
         while (current != null) {
@@ -19,6 +24,11 @@ public class ArvoreBinaria {
         return false;
     }
 
+    /**
+     * Insere o elemento na árvore
+     *
+     * @param valor
+     */
     public void inserir(int valor) {
         Elemento elemento = new Elemento(valor);
         if (arvoreVazia()) {
@@ -46,11 +56,14 @@ public class ArvoreBinaria {
         }
     }
 
+    /**
+     * Imprime a árvore binária ordenada
+     */
     public void imprimir() {
         imprimir(this.raiz);
     }
 
-    public void imprimir(Elemento raiz) {
+    private void imprimir(Elemento raiz) {
         if (raiz != null) {
             imprimir(raiz.esquerdo);
             System.out.print(" " + raiz.valor);
@@ -81,8 +94,8 @@ public class ArvoreBinaria {
                 return false;
             }
         }
-        //if i am here that means we have found the node
-        //Case 1: if node to be deleted has no children
+
+        // se chegou aqui, significa que o elemento foi encontrado
         if (!atual.possuiFilhos()) {
             if (atual == raiz) {
                 raiz = null;
